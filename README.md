@@ -31,3 +31,6 @@ Learned how to use UITabView through swift/playground.
 
 Project 8
 Building a UIKit user interface programatically.
+
+Project 9
+Implemented GCD on project 7.
