@@ -13,11 +13,15 @@ Apply selected filter (sepia tone or other types of filters) to an image from th
   <h3> Filtering Options </h3>
   <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS5.png">  
   <br />
-  <h3> Filters </h3>
+  <h3> In-App Filtering Options </h3>
   <div>
+    <h4> Intensity </h4>
     <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS3.png">
     <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS2.png">
     <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS4.png">
+  </div>
+  <div>
+    <h4> Filters (from left, pixelated, gaussian blur, twirl distortion) </h4>
     <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS6.png">
     <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS7.png">
     <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS8.png">
