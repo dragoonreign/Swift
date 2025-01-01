@@ -1,9 +1,20 @@
 Projects 1-9
 Understanding the basics of Swift/UIKit & Playground.
 
-Project 13
+<h2> Project 13 </h2>
 CoreImage, UIKit (slider, image, and buttons).
 Apply selected filter (sepia tone or other types of filters) to an image from the PhotoLibrary.
+
+<p align="left">
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS1.png">
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS5.png">
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS3.png">
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS2.png">
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS4.png">
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS6.png">
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS7.png">
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/Project13/Project13_SS/SS8.png">
+</p>
 
 Details:
 Project 1
