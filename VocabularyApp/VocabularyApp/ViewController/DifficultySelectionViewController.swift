@@ -45,11 +45,14 @@ extension DifficultySelectionViewController: UITableViewDataSource, UITableViewD
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let vc = storyboard.instantiateViewController(withIdentifier: "definitionVC")
-        
+
+        //update the text variable to array element.
+        vc.text = strings[indexPath.row]
+
+
+        //update the nav title to new title.
         vc.navigationItem.title = strings[indexPath.row]
-        
         navigationController?.pushViewController(vc, animated: true)
-        
         print(strings[indexPath.row])
     }
     
