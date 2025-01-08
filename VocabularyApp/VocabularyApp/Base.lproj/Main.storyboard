@@ -165,6 +165,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iSG-HC-aPP"/>
+                    <connections>
+                        <outlet property="label" destination="fBn-fN-gfw" id="X3n-JG-pRX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4GC-O7-YGE" sceneMemberID="firstResponder"/>
             </objects>
