@@ -9,7 +9,13 @@ import Foundation
 import UIKit
 
 class DefinitionViewController: UIViewController {
+    //drag the label here
+    // weak label here
+    
+    var text: String?
+    
     override func viewDidLoad() {
-        
+        if text != nil {
+            label.text = text
     }
 }
