@@ -12,22 +12,43 @@ class DefinitionViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     var text: String?
     var words = [Word]()
+    var definitions = [Word.Definitions]()
     typealias CompletionHandler = (_ success: Bool) -> Void
+    
+    let tableView = UITableView()
+    var safeArea: UILayoutGuide!
+    var characters = ["alpha", "beta", "gamma"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getWord(word: text ?? " ")  //prints out got the word if fetch async is successful
+        
+        tableView.dataSource = self
+        
+        
+    }
+    
+    func setUpTableView() {
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "definitionCell")
     }
     
     func displayDefinition() {
         print("got the word successfully and displaying information to the screen")
         
-        if words.count > 0 {
-            label.text = words[0].word
-        }
+        view.backgroundColor = .white
+        safeArea = view.layoutMarginsGuide
+        setUpTableView()
         
-        
+//        if words.count > 0 {
+//            label.text = words[0].word
+//        }
     }
     
     func getWord(word: String) {
@@ -49,7 +70,9 @@ class DefinitionViewController: UIViewController {
                     do {
                         let decodedUsers = try JSONDecoder().decode([Word].self, from: data)
                         self.words.removeAll()
-                        self.words.append(decodedUsers[0])
+                        self.words = [decodedUsers[0]]
+                        self.definitions = (decodedUsers[0].meanings?[0].definitions)!
+                        print(self.definitions)
 //                        self.words = [decodedUsers[0]]
                         self.displayDefinition()
                     } catch let error {
@@ -61,4 +84,18 @@ class DefinitionViewController: UIViewController {
 
         dataTask.resume()
     }
+}
+
+extension DefinitionViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return definitions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "definitionCell", for: indexPath)
+        cell.textLabel?.text = definitions[indexPath.row].definition
+        return cell
+    }
+    
+    
 }

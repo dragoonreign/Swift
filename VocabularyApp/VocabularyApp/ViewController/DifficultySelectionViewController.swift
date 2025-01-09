@@ -21,7 +21,7 @@ class DifficultySelectionViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    var strings: [String] = ["alpha", "beta", "gamma"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
