@@ -91,19 +91,23 @@ extension DifficultySelectionViewController: UITableViewDataSource, UITableViewD
         let vc = storyboard.instantiateViewController(withIdentifier: "definitionVC") as! DefinitionViewController
 
         //update the text variable to array element.
-        if button.titleLabel?.text == "B2" {
+        switch button.titleLabel?.text {
+        case "B2":
             vc.text = b2Vocab[indexPath.row]
-        }
-        if button.titleLabel?.text == "C1" {
+        case "C1":
             vc.text = c1Vocab[indexPath.row]
+        default:
+            print("empty")
         }
         
         //update the nav title to new title.
-        if button.titleLabel?.text == "B2" {
+        switch button.titleLabel?.text {
+        case "B2":
             vc.navigationItem.title = b2Vocab[indexPath.row]
-        }
-        if button.titleLabel?.text == "C1" {
+        case "C1":
             vc.navigationItem.title = c1Vocab[indexPath.row]
+        default:
+            print("empty")
         }
         
         vc.modalPresentationStyle = .fullScreen
@@ -111,23 +115,26 @@ extension DifficultySelectionViewController: UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if button.titleLabel?.text == "B2" {
+        switch button.titleLabel?.text {
+        case "B2":
             return b2Vocab.count
-        }
-        if button.titleLabel?.text == "C1" {
+        case "C1":
             return c1Vocab.count
+        default:
+            return 0
         }
-        
-        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        if button.titleLabel?.text == "B2" {
+        
+        switch button.titleLabel?.text {
+        case "B2":
             cell.textLabel?.text = b2Vocab[indexPath.row]
-        }
-        if button.titleLabel?.text == "C1" {
+        case "C1":
             cell.textLabel?.text = c1Vocab[indexPath.row]
+        default:
+            print("error in table view cell for row at")
         }
         
         return cell
