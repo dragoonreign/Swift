@@ -29,6 +29,24 @@ Apply selected filter (sepia tone or other types of filters) to an image from th
   </div>
 </p>
 
+<h2> Vocabulary App  </h2>
+<h4> Code: https://github.com/dragoonreign/Swift/tree/main/VocabularyApp/VocabularyApp/ViewController </h4>
+UIKit, JSONDecoder, HTMLRequest
+<br />
+Apply selected filter (sepia tone or other types of filters) to an image from the PhotoLibrary. 
+<br />
+
+<p align="left">
+  <h3> Vocabulary Word List </h3>
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss1.png">  
+  <br />
+  <h3> Difficulty Options </h3>
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss2.png">  
+  <br />
+  <h3> Definitions </h3>
+  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss3.png">
+</p>
+
 <h2> Details </h2>
 <br/>
 Projects 1-9
