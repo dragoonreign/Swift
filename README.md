@@ -37,17 +37,15 @@ Apply selected filter (sepia tone or other types of filters) to an image from th
 <br />
 
 <p align="left">
-  <h3> Vocabulary Word List </h3>
-  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss1.png">  
-  <br />
-  <h3> Difficulty Options </h3>
-  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss2.png">  
-  <br />
-  <h3> Definitions </h3>
-  <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss3.png">
+  <h3> From left: Vocabulary Word List, Difficulty Options, and Definitions view </h3>
+  <div>
+    <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss1.png">  
+    <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss2.png">  
+    <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss3.png">
+  </div>
 </p>
 
-<h2> Details </h2>
+<h2> Other Projects Detail </h2>
 <br/>
 Projects 1-9
 Understanding the basics of Swift/UIKit & Playground.
