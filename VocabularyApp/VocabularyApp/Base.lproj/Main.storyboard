@@ -65,12 +65,23 @@
                                 <rect key="frame" x="166" y="161" width="141" height="27"/>
                                 <menu key="menu" id="LIg-un-4U0">
                                     <children>
-                                        <command title="Item 1" id="iXK-aO-KSU"/>
-                                        <command title="Item 2" id="1zD-F1-VFM"/>
+                                        <command title="B2" id="iXK-aO-KSU">
+                                            <connections>
+                                                <action selector="buttonAction:" destination="dkx-z0-nzr" id="pdD-pw-2OV"/>
+                                            </connections>
+                                        </command>
+                                        <command title="C1" id="1zD-F1-VFM">
+                                            <connections>
+                                                <action selector="buttonAction:" destination="dkx-z0-nzr" id="HhR-ZP-Hf2"/>
+                                            </connections>
+                                        </command>
                                     </children>
                                 </menu>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="buttonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EmD-Ck-wzO"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="house" catalog="system" id="gno-am-LKN" userLabel="ABC">
                                 <rect key="frame" x="0.0" y="98" width="158" height="94"/>

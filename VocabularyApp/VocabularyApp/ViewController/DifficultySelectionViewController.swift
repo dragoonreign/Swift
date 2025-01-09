@@ -32,18 +32,24 @@ class DifficultySelectionViewController: UIViewController {
         tableView.delegate = self
         
         // Do any additional setup after loading the view.
-        button.menu = UIMenu(children: [
-            UIAction(title: "B2", handler: colorClosure),
-            UIAction(title: "C1", handler: colorClosure),
-        ])
+//        button.menu = UIMenu(children: [
+//            UIAction(title: "B2", handler: colorClosure),
+//            UIAction(title: "C1", handler: colorClosure),
+//        ])
         button.showsMenuAsPrimaryAction = true
         button.changesSelectionAsPrimaryAction = true
     }
     
-    @objc func sayHello() {
+    @objc func OnButtonDifficultySelected() {
         difficultySelectionLabel.text = "picked difficulty"
         descriptionLabel.text = "description"
     }
+    
+    @IBAction func buttonAction(_ sender: Any) {
+        OnButtonDifficultySelected()
+        tableView.reloadData()
+    }
+    
     
     func startGame() {
         //1. Find the url for start.txt in our app bundle
@@ -85,22 +91,45 @@ extension DifficultySelectionViewController: UITableViewDataSource, UITableViewD
         let vc = storyboard.instantiateViewController(withIdentifier: "definitionVC") as! DefinitionViewController
 
         //update the text variable to array element.
-        vc.text = b2Vocab[indexPath.row]
-//        vc.getWord(word: strings[indexPath.row])
-
+        if button.titleLabel?.text == "B2" {
+            vc.text = b2Vocab[indexPath.row]
+        }
+        if button.titleLabel?.text == "C1" {
+            vc.text = c1Vocab[indexPath.row]
+        }
+        
         //update the nav title to new title.
-        vc.navigationItem.title = b2Vocab[indexPath.row]
+        if button.titleLabel?.text == "B2" {
+            vc.navigationItem.title = b2Vocab[indexPath.row]
+        }
+        if button.titleLabel?.text == "C1" {
+            vc.navigationItem.title = c1Vocab[indexPath.row]
+        }
+        
         vc.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return b2Vocab.count
+        if button.titleLabel?.text == "B2" {
+            return b2Vocab.count
+        }
+        if button.titleLabel?.text == "C1" {
+            return c1Vocab.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = b2Vocab[indexPath.row]
+        if button.titleLabel?.text == "B2" {
+            cell.textLabel?.text = b2Vocab[indexPath.row]
+        }
+        if button.titleLabel?.text == "C1" {
+            cell.textLabel?.text = c1Vocab[indexPath.row]
+        }
+        
         return cell
     }
     
