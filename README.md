@@ -31,7 +31,7 @@ Apply selected filter (sepia tone or other types of filters) to an image from th
 
 <h2> Vocabulary App  </h2>
 <h4> Code: https://github.com/dragoonreign/Swift/tree/main/VocabularyApp/VocabularyApp/ViewController </h4>
-UIKit, JSONDecoder, HTMLRequest
+UIKit, JSONDecoder, HTMLRequest (with Async/Await), UITableView
 <br />
 Apply selected filter (sepia tone or other types of filters) to an image from the PhotoLibrary. 
 <br />
