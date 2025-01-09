@@ -94,8 +94,9 @@ extension DefinitionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "definitionCell", for: indexPath)
         cell.textLabel?.text = definitions[indexPath.row].definition
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         return cell
     }
-    
-    
 }
