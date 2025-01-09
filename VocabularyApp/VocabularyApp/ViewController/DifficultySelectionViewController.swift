@@ -90,21 +90,13 @@ extension DifficultySelectionViewController: UITableViewDataSource, UITableViewD
         
         let vc = storyboard.instantiateViewController(withIdentifier: "definitionVC") as! DefinitionViewController
 
-        //update the text variable to array element.
+        //update the text variable tand the nav title.
         switch button.titleLabel?.text {
         case "B2":
             vc.text = b2Vocab[indexPath.row]
-        case "C1":
-            vc.text = c1Vocab[indexPath.row]
-        default:
-            print("empty")
-        }
-        
-        //update the nav title to new title.
-        switch button.titleLabel?.text {
-        case "B2":
             vc.navigationItem.title = b2Vocab[indexPath.row]
         case "C1":
+            vc.text = c1Vocab[indexPath.row]
             vc.navigationItem.title = c1Vocab[indexPath.row]
         default:
             print("empty")
