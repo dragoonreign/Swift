@@ -231,16 +231,36 @@
             </objects>
             <point key="canvasLocation" x="259" y="-720"/>
         </scene>
-        <!--View Controller-->
+        <!--Spelling Game View Controller-->
         <scene sceneID="BaU-Yn-gvJ">
             <objects>
-                <viewController id="MgC-pF-RTr" customClass="ViewController" customModule="VocabularyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MgC-pF-RTr" customClass="SpellingGameViewController" customModule="VocabularyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kmk-U4-GbE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show something here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wae-g0-6b2">
-                                <rect key="frame" x="114" y="425.66666666666669" width="165" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show something here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wae-g0-6b2">
+                                <rect key="frame" x="114" y="287" width="165" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="soN-Bh-rDF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NotificationLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IfH-9W-hGL">
+                                <rect key="frame" x="132" y="592" width="129" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSg-8f-kcO">
+                                <rect key="frame" x="148" y="522" width="144" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hint Label" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwA-Tt-PwU">
+                                <rect key="frame" x="114" y="391" width="165" height="71"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -249,15 +269,31 @@
                         <viewLayoutGuide key="safeArea" id="Hue-5r-GLC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wae-g0-6b2" firstAttribute="centerY" secondItem="Hue-5r-GLC" secondAttribute="centerY" id="Is3-Jw-hnA"/>
-                            <constraint firstItem="wae-g0-6b2" firstAttribute="centerX" secondItem="Hue-5r-GLC" secondAttribute="centerX" id="pkg-iE-3yh"/>
+                            <constraint firstItem="uwA-Tt-PwU" firstAttribute="centerX" secondItem="IfH-9W-hGL" secondAttribute="centerX" id="0Kp-rn-KRJ"/>
+                            <constraint firstItem="wae-g0-6b2" firstAttribute="trailing" secondItem="uwA-Tt-PwU" secondAttribute="trailing" id="4hj-Da-I8P"/>
+                            <constraint firstItem="uwA-Tt-PwU" firstAttribute="centerY" secondItem="Kmk-U4-GbE" secondAttribute="centerY" id="JF9-2v-2AQ"/>
+                            <constraint firstItem="wae-g0-6b2" firstAttribute="centerX" secondItem="Kmk-U4-GbE" secondAttribute="centerX" id="Lo2-yA-LFp"/>
+                            <constraint firstItem="wae-g0-6b2" firstAttribute="top" secondItem="Hue-5r-GLC" secondAttribute="top" constant="184" id="NRd-a1-cjm"/>
+                            <constraint firstItem="RSg-8f-kcO" firstAttribute="top" secondItem="uwA-Tt-PwU" secondAttribute="bottom" constant="60" id="SXI-rE-3pb"/>
+                            <constraint firstItem="wae-g0-6b2" firstAttribute="leading" secondItem="uwA-Tt-PwU" secondAttribute="leading" id="iBH-jf-uQK"/>
+                            <constraint firstItem="IfH-9W-hGL" firstAttribute="top" secondItem="RSg-8f-kcO" secondAttribute="bottom" constant="36" id="li5-M4-E8y"/>
+                            <constraint firstItem="uwA-Tt-PwU" firstAttribute="top" secondItem="wae-g0-6b2" secondAttribute="bottom" constant="83" id="mu8-wD-M9d"/>
+                            <constraint firstItem="Hue-5r-GLC" firstAttribute="bottom" secondItem="IfH-9W-hGL" secondAttribute="bottom" constant="156" id="my7-YY-U01"/>
+                            <constraint firstItem="RSg-8f-kcO" firstAttribute="leading" secondItem="Hue-5r-GLC" secondAttribute="leading" constant="148" id="q60-VM-Oiy"/>
+                            <constraint firstItem="RSg-8f-kcO" firstAttribute="centerX" secondItem="Hue-5r-GLC" secondAttribute="centerX" id="u8p-sO-bp5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iFc-7x-AgE"/>
+                    <connections>
+                        <outlet property="hintLabel" destination="uwA-Tt-PwU" id="zx4-Rg-O9a"/>
+                        <outlet property="notificationLabel" destination="IfH-9W-hGL" id="4a0-WE-YuE"/>
+                        <outlet property="textField" destination="RSg-8f-kcO" id="SgZ-cK-74v"/>
+                        <outlet property="wordDefinition" destination="wae-g0-6b2" id="WHU-sd-w9l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xNd-jX-uca" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="-27"/>
+            <point key="canvasLocation" x="1313.7404580152672" y="-27.464788732394368"/>
         </scene>
         <!--Page 3-->
         <scene sceneID="mZt-Xj-SGj">
