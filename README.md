@@ -42,6 +42,12 @@ Apply selected filter (sepia tone or other types of filters) to an image from th
     <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss1.png">  
     <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss2.png">  
     <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss3.png">
+    
+  </div>
+  <h3> Guess the word game </h3>
+  <div>
+    <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss4.png">
+    <img width="250" height="500" src="https://github.com/dragoonreign/Swift/blob/main/VocabularyApp/Screenshot/ss5.png">
   </div>
 </p>
 
