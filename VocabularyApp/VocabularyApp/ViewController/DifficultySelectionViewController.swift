@@ -10,6 +10,7 @@ import UIKit
 class DifficultySelectionViewController: UIViewController {
     private var allWords = [String]()
     private var b2Vocab = [String]()
+    private var b2VocabInGroup = [[String]]()
     private var c1Vocab = [String]()
     private var vocab = ""
     private var partOfSpeech = ""
@@ -63,6 +64,22 @@ class DifficultySelectionViewController: UIViewController {
                     newArray.append(word.components(separatedBy: " ")[0])
                 }
                 b2Vocab = Array(newArray[1..<newArray.firstIndex(of: "C1")!])
+                
+//                shuffleArrayOnce(Array: b2Vocab, Array: b2VocabInGroup)
+                
+                var shuffledB2Array = b2Vocab.shuffled()
+                var emptyArray = [String]()
+                for (index, element) in shuffledB2Array.enumerated()  {
+                    if index % 5 == 0 && index != 0 {
+                        b2VocabInGroup.append(emptyArray)
+                        emptyArray.removeAll()
+                        emptyArray.append(element)
+                    } else {
+                        emptyArray.append(element)
+                    }
+                }
+                print(b2VocabInGroup)
+
                 c1Vocab = Array(newArray[newArray.firstIndex(of: "C1")!+1..<newArray.count - 1])
                 //4. pick on random word, or use "silkworm" as a sensible default
                 let vocabWordArr = allWords.randomElement()?.components(separatedBy: " ")
@@ -80,6 +97,21 @@ class DifficultySelectionViewController: UIViewController {
         // if we are here then there was a problem - trigger a crash and report the error
         fatalError("Could not load start.txt from bundle.")
     }
+    
+//    @objc func shuffleArrayOnce(Array array: [String], targetArray: UnsafeMutablePointer<GLfloat>) {
+//        var shuffledArray = array.shuffled()
+//        var emptyArray = [String]()
+//        for (index, element) in shuffledArray.enumerated()  {
+//            if index % 5 == 0 && index != 0 {
+//                targetArray.append(emptyArray)
+//                emptyArray.removeAll()
+//                emptyArray.append(element)
+//            } else {
+//                emptyArray.append(element)
+//            }
+//        }
+//        print(targetArray)
+//    }
 
 }
 
