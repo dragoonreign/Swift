@@ -10,8 +10,10 @@ import UIKit
 class DefinitionViewController: UIViewController {
     //drag the label here
     @IBOutlet weak var label: UILabel!
+    var selectedWords: [String]?
     var text: String?
     var words = [Word]()
+    var meanings = [Word.Meanings]()
     var definitions = [Word.Definitions]()
     typealias CompletionHandler = (_ success: Bool) -> Void
     
@@ -22,7 +24,9 @@ class DefinitionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getWord(word: text ?? " ")  //prints out got the word if fetch async is successful
+        for element in selectedWords ?? [] {
+            getWord(word: element)  //prints out got the word if fetch async is successful
+        }
         
         tableView.dataSource = self
         
@@ -41,6 +45,8 @@ class DefinitionViewController: UIViewController {
     
     func displayDefinition() {
         print("got the word successfully and displaying information to the screen")
+        
+        print(words.count)
         
         view.backgroundColor = .white
         safeArea = view.layoutMarginsGuide
@@ -69,11 +75,12 @@ class DefinitionViewController: UIViewController {
                 DispatchQueue.main.async {
                     do {
                         let decodedUsers = try JSONDecoder().decode([Word].self, from: data)
-                        self.words.removeAll()
-                        self.words = [decodedUsers[0]]
+                        if self.words.count >= 5 {
+                            self.words.removeAll()
+                        }
+                        self.words.append(decodedUsers[0])
+                        self.meanings.append((decodedUsers[0].meanings?[0])!)
                         self.definitions = (decodedUsers[0].meanings?[0].definitions)!
-                        print(self.definitions)
-//                        self.words = [decodedUsers[0]]
                         self.displayDefinition()
                     } catch let error {
                         print("Error decoding: ", error)

@@ -12,6 +12,7 @@ class DifficultySelectionViewController: UIViewController {
     private var b2Vocab = [String]()
     private var b2VocabInGroup = [[String]]()
     private var c1Vocab = [String]()
+    private var c1VocabInGroup = [[String]]()
     private var vocab = ""
     private var partOfSpeech = ""
     
@@ -69,18 +70,11 @@ class DifficultySelectionViewController: UIViewController {
                 
                 var shuffledB2Array = b2Vocab.shuffled()
                 var emptyArray = [String]()
-                for (index, element) in shuffledB2Array.enumerated()  {
-                    if index % 5 == 0 && index != 0 {
-                        b2VocabInGroup.append(emptyArray)
-                        emptyArray.removeAll()
-                        emptyArray.append(element)
-                    } else {
-                        emptyArray.append(element)
-                    }
-                }
-                print(b2VocabInGroup)
+                b2VocabInGroup = shuffleArrayOnce(Array: b2Vocab)
 
                 c1Vocab = Array(newArray[newArray.firstIndex(of: "C1")!+1..<newArray.count - 1])
+                c1VocabInGroup = shuffleArrayOnce(Array: c1Vocab)
+                
                 //4. pick on random word, or use "silkworm" as a sensible default
                 let vocabWordArr = allWords.randomElement()?.components(separatedBy: " ")
                 vocab = vocabWordArr?[0] ?? "error"
@@ -98,20 +92,21 @@ class DifficultySelectionViewController: UIViewController {
         fatalError("Could not load start.txt from bundle.")
     }
     
-//    @objc func shuffleArrayOnce(Array array: [String], targetArray: UnsafeMutablePointer<GLfloat>) {
-//        var shuffledArray = array.shuffled()
-//        var emptyArray = [String]()
-//        for (index, element) in shuffledArray.enumerated()  {
-//            if index % 5 == 0 && index != 0 {
-//                targetArray.append(emptyArray)
-//                emptyArray.removeAll()
-//                emptyArray.append(element)
-//            } else {
-//                emptyArray.append(element)
-//            }
-//        }
-//        print(targetArray)
-//    }
+    @objc func shuffleArrayOnce(Array array: [String]) -> [[String]] {
+        var shuffledArray = array.shuffled()
+        var targetArray = [[String]]()
+        var emptyArray = [String]()
+        for (index, element) in shuffledArray.enumerated()  {
+            if index % 5 == 0 && index != 0 {
+                targetArray.append(emptyArray)
+                emptyArray.removeAll()
+                emptyArray.append(element)
+            } else {
+                emptyArray.append(element)
+            }
+        }
+        return (targetArray)
+    }
 
 }
 
@@ -127,9 +122,11 @@ extension DifficultySelectionViewController: UITableViewDataSource, UITableViewD
         case "B2":
             vc.text = b2Vocab[indexPath.row]
             vc.navigationItem.title = b2Vocab[indexPath.row]
+            vc.selectedWords = b2VocabInGroup[indexPath.row]
         case "C1":
             vc.text = c1Vocab[indexPath.row]
             vc.navigationItem.title = c1Vocab[indexPath.row]
+            vc.selectedWords = c1VocabInGroup[indexPath.row]
         default:
             print("empty")
         }
@@ -154,9 +151,10 @@ extension DifficultySelectionViewController: UITableViewDataSource, UITableViewD
         
         switch button.titleLabel?.text {
         case "B2":
-            cell.textLabel?.text = b2Vocab[indexPath.row]
+//            cell.textLabel?.text = b2Vocab[indexPath.row]
+            cell.textLabel?.text = b2VocabInGroup[indexPath.row].joined(separator: ", ")
         case "C1":
-            cell.textLabel?.text = c1Vocab[indexPath.row]
+            cell.textLabel?.text = c1VocabInGroup[indexPath.row].joined(separator: ", ")
         default:
             print("error in table view cell for row at")
         }

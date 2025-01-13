@@ -27,6 +27,8 @@ struct Word: Decodable {
 //        let partOfSpeeches: [PartOfSpeeches]?
         let partOfSpeech: String?
         let definitions: [Definitions]?
+        let synonyms: [String]?
+        let antonyms: [String]?
     }
     
 //    struct PartOfSpeeches: Decodable {
