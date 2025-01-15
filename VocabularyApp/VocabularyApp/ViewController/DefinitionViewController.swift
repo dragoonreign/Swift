@@ -10,6 +10,7 @@ import UIKit
 class DefinitionViewController: UIViewController {
     //drag the label here
     @IBOutlet weak var label: UILabel!
+    
     var selectedWords: [String]?
     var text: String?
     var words = [Word]()
@@ -21,14 +22,58 @@ class DefinitionViewController: UIViewController {
     var safeArea: UILayoutGuide!
     var characters = ["alpha", "beta", "gamma"]
     
+    let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.backgroundColor = .yellow
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.spacing = 0
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.setContentHuggingPriority(.required, for: .horizontal)
+        stack.setContentCompressionResistancePriority(.required, for: .horizontal)
+        
+        return stack
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(scrollView)
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+        
+        
+        view.addSubview(stackView)
+//        stackView.heightAnchor.constraint(equalToConstant: view.frame.height - 100).isActive = true
+//        stackView.widthAnchor.constraint(equalToConstant: view.frame.width - 50).isActive = true
+//        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+        ])
+        
         
         for element in selectedWords ?? [] {
             getWord(word: element)  //prints out got the word if fetch async is successful
         }
         
-        tableView.dataSource = self
+//        tableView.dataSource = self
         
         
     }
@@ -48,9 +93,39 @@ class DefinitionViewController: UIViewController {
         
         print(words.count)
         
-        view.backgroundColor = .white
-        safeArea = view.layoutMarginsGuide
-        setUpTableView()
+        let wordStackView: UIStackView = {
+            let stack = UIStackView()
+            stack.axis = .vertical
+//            stack.distribution = .fill
+            stack.spacing = 10
+            stack.translatesAutoresizingMaskIntoConstraints = false
+            stack.backgroundColor = UIColor.random()
+            return stack
+        }()
+        
+        let myIndex = words.count - 1
+        
+        let pageLabel = UILabel()
+        let wordLabel = UILabel()
+        let definitionLabel = UILabel()
+        
+        pageLabel.text = "Definition"
+        wordLabel.text = words[myIndex].word
+        wordLabel.lineBreakMode = .byWordWrapping
+        wordLabel.numberOfLines = 0
+        definitionLabel.text = words[myIndex].meanings![0].definitions![0].definition
+        definitionLabel.lineBreakMode = .byWordWrapping
+        definitionLabel.numberOfLines = 0
+            
+        wordStackView.addArrangedSubview(wordLabel)
+        wordStackView.addArrangedSubview(pageLabel)
+        wordStackView.addArrangedSubview(definitionLabel)
+        
+        stackView.addArrangedSubview(wordStackView)
+        
+//        view.backgroundColor = .white
+//        safeArea = view.layoutMarginsGuide
+//        setUpTableView()
         
 //        if words.count > 0 {
 //            label.text = words[0].word
@@ -93,17 +168,27 @@ class DefinitionViewController: UIViewController {
     }
 }
 
-extension DefinitionViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return definitions.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "definitionCell", for: indexPath)
-        cell.textLabel?.text = definitions[indexPath.row].definition
-        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
-        return cell
+//extension DefinitionViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return definitions.count
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "definitionCell", for: indexPath)
+//        cell.textLabel?.text = definitions[indexPath.row].definition
+//        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+//        cell.textLabel?.numberOfLines = 0
+//        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+//        return cell
+//    }
+//    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Definitions"
+//    }
+//}
+
+extension UIColor {
+    static func random() -> UIColor {
+        return UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
     }
 }
