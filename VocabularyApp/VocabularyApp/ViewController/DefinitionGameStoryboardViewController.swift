@@ -44,16 +44,25 @@ class DefinitionGameStoryboardViewController: UIViewController {
         startGame()
     }
     
+    func goToNextGameMode() {
+        var storyboard: UIStoryboard!
+        storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "synonymVC") as! SynonymGameViewController
+        vc.words = words
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func buttonAction(_ sender: UIButton) {
         if sender.titleLabel?.text == correctWord {
             print("Correct!")
             
-            if runs < 4 {
+            if runs < 1 {
                 runs += 1
                 startGame()
             } else {
                 resetGame()
                 print("To the next game!")
+                goToNextGameMode()
             }
         } else {
             print("Incorrect!")
