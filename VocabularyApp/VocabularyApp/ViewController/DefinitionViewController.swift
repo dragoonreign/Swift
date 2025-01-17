@@ -41,6 +41,8 @@ class DefinitionViewController: UIViewController {
         return stack
     }()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,7 +56,7 @@ class DefinitionViewController: UIViewController {
         ])
         
         
-        view.addSubview(stackView)
+        scrollView.addSubview(stackView)
 //        stackView.heightAnchor.constraint(equalToConstant: view.frame.height - 100).isActive = true
 //        stackView.widthAnchor.constraint(equalToConstant: view.frame.width - 50).isActive = true
 //        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -67,6 +69,29 @@ class DefinitionViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             stackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
         ])
+        
+        let button: UIButton = {
+            let button = UIButton(type: .system)
+            button.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
+            button.setTitle( "Start", for: .normal)
+            button.tintColor = .label
+            button.backgroundColor = .red
+    //        button.center = testLabel.center
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(goToDefinitionGame), for: .touchUpInside)
+            return button
+        }()
+        
+        view.addSubview(button)
+        
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: scrollView.topAnchor),
+//            button.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+//            button.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+//            button.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+//            button.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+        ])
+        
         
         
         for element in selectedWords ?? [] {
@@ -100,6 +125,8 @@ class DefinitionViewController: UIViewController {
             stack.spacing = 10
             stack.translatesAutoresizingMaskIntoConstraints = false
             stack.backgroundColor = UIColor.random()
+            stack.setContentHuggingPriority(.required, for: .horizontal)
+            stack.setContentCompressionResistancePriority(.required, for: .horizontal)
             return stack
         }()
         
@@ -165,6 +192,16 @@ class DefinitionViewController: UIViewController {
         }
 
         dataTask.resume()
+    }
+    
+    @objc func goToDefinitionGame() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "definitionGameStoryboardVC") as! DefinitionGameStoryboardViewController
+        
+        vc.words = words
+        
+        vc.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
