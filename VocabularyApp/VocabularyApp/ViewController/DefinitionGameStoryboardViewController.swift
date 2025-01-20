@@ -47,7 +47,7 @@ class DefinitionGameStoryboardViewController: UIViewController {
     func goToNextGameMode() {
         var storyboard: UIStoryboard!
         storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "synonymVC") as! SynonymGameViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "spellingGameVC") as! SpellingGameViewController
         vc.words = words
         self.navigationController?.pushViewController(vc, animated: true)
     }
